@@ -26,6 +26,7 @@ public class SetGoalBehavior : MonoBehaviour
             gameMode = "time";
         }
         SetGoalText();
+        inputField.characterLimit = 6;
     }
 
     public void SetGoalText()
