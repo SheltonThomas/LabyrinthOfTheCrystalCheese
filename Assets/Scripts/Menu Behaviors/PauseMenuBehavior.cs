@@ -7,7 +7,7 @@ public class PauseMenuBehavior : MonoBehaviour
 {
     public GameObject pauseMenu;
 
-    public static bool Paused { get; set; }
+    public static bool Paused { get; set; } = false;
 
     void Start()
     {
