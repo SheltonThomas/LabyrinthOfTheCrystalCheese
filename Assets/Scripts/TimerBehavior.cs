@@ -8,8 +8,10 @@ public class TimerBehavior : MonoBehaviour
 {
     [SerializeField]
     private Text timerText;
+    
     [HideInInspector]
-    public float startTime = 0;
+    public float startTime;
+
     private float timeRemaining;
     public float TimeRemaining { get; }
 
@@ -34,6 +36,31 @@ public class TimerBehavior : MonoBehaviour
 
     public void DrawTimer()
     {
-        timerText.text = (Math.Round(timeRemaining, 1)).ToString();
+        if(timeRemaining <= 10)
+        {
+            timerText.text = (Math.Round(timeRemaining, 1)).ToString();
+        }
+        else if (timeRemaining <= 60)
+        {
+            timerText.text = ((int)timeRemaining).ToString();
+        }
+        else
+        {
+            int minutes = (int)(timeRemaining / 60);
+            float seconds = timeRemaining - (minutes * 60);
+            if(seconds < 10)
+            {
+                timerText.text = minutes + ":0" + (int)seconds;
+            }
+            else
+            {
+                timerText.text = minutes + ":" + (int)seconds;
+            }
+        }
+
+        if(timeRemaining <= 0)
+        {
+            timeRemaining = 0;
+        }
     }
 }
