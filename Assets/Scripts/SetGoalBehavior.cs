@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SetGoalBehavior : MonoBehaviour
 {
@@ -57,5 +58,7 @@ public class SetGoalBehavior : MonoBehaviour
     public void Confirm()
     {
         GameVariables.gameLimit = (float)previousNumber;
+        //Change to goto game scene
+        SceneManager.LoadScene(0);
     }
 }
