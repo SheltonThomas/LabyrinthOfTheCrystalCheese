@@ -28,7 +28,7 @@ public class TimerBehavior : MonoBehaviour
 
     public void UpdateTimer()
     {
-        if (!PauseMenuBehavior.Paused)
+        if (!GameVariables.Paused)
         {
             timeRemaining -= Time.deltaTime;
         }

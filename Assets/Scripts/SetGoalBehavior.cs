@@ -15,13 +15,13 @@ public class SetGoalBehavior : MonoBehaviour
 
     void Start()
     {
-        MainMenuBehavior.GameMode = GameMode.Points;
+        GameVariables.GameMode = GameMode.Points;
 
-        if (MainMenuBehavior.GameMode == GameMode.Points)
+        if (GameVariables.GameMode == GameMode.Points)
         {
             gameMode = "point";
         }
-        if (MainMenuBehavior.GameMode == GameMode.Timed)
+        if (GameVariables.GameMode == GameMode.Timed)
         {
             gameMode = "time";
         }
@@ -52,5 +52,10 @@ public class SetGoalBehavior : MonoBehaviour
         {
             inputField.text = previousNumber.ToString();
         }
+    }
+
+    public void Confirm()
+    {
+        GameVariables.gameLimit = (float)previousNumber;
     }
 }

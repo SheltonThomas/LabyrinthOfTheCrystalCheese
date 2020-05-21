@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class PauseMenuBehavior : MonoBehaviour
 {
     public GameObject pauseMenu;
 
-    public static bool Paused { get; set; } = false;
-
     void Start()
     {
-        pauseMenu.SetActive(Paused);
+        pauseMenu.SetActive(GameVariables.Paused);
     }
 
     void Update()
     {
-        if(Paused)
+        if(GameVariables.Paused)
         {
-            pauseMenu.SetActive(Paused);
+            pauseMenu.SetActive(GameVariables.Paused);
         }
     }
     
     public void ResumeGame()
     {
-        Paused = false;
+        GameVariables.Paused = false;
         pauseMenu.SetActive(false);
     }
 
