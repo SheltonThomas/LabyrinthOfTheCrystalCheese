@@ -6,18 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class SetGoalBehavior : MonoBehaviour
 {
+    //Used to make text say the right game mode.
     private string gameMode;
     [SerializeField]
     private Text goalText;
 
+    //Used to make sure the next character that is inputted is a number.
     private float? previousNumber;
     [SerializeField]
     private InputField inputField;
 
+    public int characterLimit;
+
     void Start()
     {
-        GameVariables.GameMode = GameMode.Points;
-
+        //Sets the game mode to in the text.
         if (GameVariables.GameMode == GameMode.Points)
         {
             gameMode = "point";
@@ -26,15 +29,19 @@ public class SetGoalBehavior : MonoBehaviour
         {
             gameMode = "time";
         }
+        //Writes the text.
         SetGoalText();
-        inputField.characterLimit = 6;
+        //Sets character limit
+        inputField.characterLimit = characterLimit;
     }
 
+    //Writes the text telling the player to input limit.
     public void SetGoalText()
     {
         goalText.text = "Type the desired " + gameMode + " limit.";
     }
 
+    //Checks to make sure the character inputted is an int.
     public void CheckForCharacter()
     {
         if(inputField.text.Length == 0)
@@ -55,6 +62,7 @@ public class SetGoalBehavior : MonoBehaviour
         }
     }
 
+    //Done after user presses enter.
     public void Confirm()
     {
         GameVariables.gameLimit = (float)previousNumber;

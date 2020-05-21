@@ -8,4 +8,9 @@ public class MainMenuBehavior : MonoBehaviour
     {
         GameVariables.GameMode = (GameMode)gameMode;
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

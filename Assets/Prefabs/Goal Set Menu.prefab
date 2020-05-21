@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalText: {fileID: 6764038690749095846}
   inputField: {fileID: 6764038691059622024}
+  characterLimit: 6
 --- !u!1 &6764038691706952382
 GameObject:
   m_ObjectHideFlags: 0

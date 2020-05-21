@@ -6,23 +6,28 @@ using UnityEngine.UI;
 
 public class TimerBehavior : MonoBehaviour
 {
+    //Text that is modified to show time remaining.
     [SerializeField]
     private Text timerText;
     
+    //Sets how much time the game starts with.
     [HideInInspector]
     public float startTime;
 
+    //Keeps track of time remaining.
     private float timeRemaining;
-    public float TimeRemaining { get; }
 
     void Start()
     {
+        //Sets time.
         timeRemaining = startTime;
     }
 
     void Update()
     {
+        //Updates the timer on the screen.
         DrawTimer();
+        //Updates time remaining.
         UpdateTimer();
     }
 
