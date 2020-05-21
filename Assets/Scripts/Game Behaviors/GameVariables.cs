@@ -18,4 +18,8 @@ public class GameVariables : MonoBehaviour
 
     //Used for getting and setting the game mode.
     public static GameMode GameMode { get; set; }
+
+    //Keeps track of the players' scores.
+    public static int CatScore { get; set; }
+    public static int MouseScore { get; set; }
 }
