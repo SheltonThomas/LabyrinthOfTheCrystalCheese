@@ -33,6 +33,7 @@ public class SetGoalBehavior : MonoBehaviour
         SetGoalText();
         //Sets character limit
         inputField.characterLimit = characterLimit;
+        gameObject.SetActive(false);
     }
 
     //Writes the text telling the player to input limit.

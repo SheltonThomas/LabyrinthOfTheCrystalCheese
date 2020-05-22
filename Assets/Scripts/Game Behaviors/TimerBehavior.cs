@@ -28,7 +28,10 @@ public class TimerBehavior : MonoBehaviour
         //Updates the timer on the screen.
         DrawTimer();
         //Updates time remaining.
-        UpdateTimer();
+        if(!GameVariables.Paused)
+        {
+            UpdateTimer();
+        }
     }
 
     public void UpdateTimer()
@@ -41,9 +44,16 @@ public class TimerBehavior : MonoBehaviour
 
     public void DrawTimer()
     {
-        if(timeRemaining <= 10)
+        if(timeRemaining < 10)
         {
-            timerText.text = (Math.Round(timeRemaining, 1)).ToString();
+            if(Math.Round(timeRemaining, 1) % 1 != 0)
+            {
+                timerText.text = (Math.Round(timeRemaining, 1)).ToString();
+            }
+            else
+            {
+                timerText.text = Math.Round(timeRemaining, 1) + ".0";
+            }
         }
         else if (timeRemaining <= 60)
         {

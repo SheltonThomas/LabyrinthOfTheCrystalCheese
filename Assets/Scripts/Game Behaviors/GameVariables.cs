@@ -20,6 +20,6 @@ public class GameVariables : MonoBehaviour
     public static GameMode GameMode { get; set; }
 
     //Keeps track of the players' scores.
-    public static int CatScore { get; set; }
-    public static int MouseScore { get; set; }
+    public static int CatScore { get; set; } = 0;
+    public static int MouseScore { get; set; } = 0;
 }
