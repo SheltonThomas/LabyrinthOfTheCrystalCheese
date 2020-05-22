@@ -5,33 +5,37 @@ using UnityEngine;
 public class KeyboardMovementBehavior : MonoBehaviour
 {
     [SerializeField]
-    private CharacterController controller;
+    private Rigidbody rb;
+    public Vector3 moveDirection;
     public Transform target;
     public float speed = 5.0f;
 
+    void Start()
+    {
+        rb = this.GetComponent<Rigidbody>();
+    }
     // Update is called once per frame
     void Update()
     {
-        // Find the Direction
-        Vector3 moveDirection = new Vector3(0, 0, 0);
-        if (Input.GetKey(KeyCode.W))
-            moveDirection += new Vector3(0, 0, 1);   // Up
-        if (Input.GetKey(KeyCode.A))
-            moveDirection += new Vector3(-1, 0, 0);  // Left
-        if (Input.GetKey(KeyCode.S))
-            moveDirection += new Vector3(0, 0, -1);   // Down
-        if (Input.GetKey(KeyCode.D))
-            moveDirection += new Vector3(1, 0, 0);   // Right
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));   // Up & Down & Left & Right
         moveDirection.Normalize();
 
+        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        transform.LookAt(newPosition + transform.position);
+        transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
+    }
+
+    void FixedUpdate()
+    {
         // Set Magnitude
-        moveDirection *= speed;
+        MovePlayer(moveDirection);
+    }
 
-        // Move
-        controller.Move(moveDirection * Time.deltaTime);
-
-        //Vector3 relativePos = target.position - transform.position;
-        //Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        //transform.rotation = rotation;
+    void MovePlayer(Vector3 direction)
+    {
+        rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
     }
 }
