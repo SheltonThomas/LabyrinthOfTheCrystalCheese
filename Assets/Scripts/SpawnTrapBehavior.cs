@@ -5,12 +5,12 @@ using UnityEngine;
 public class SpawnTrapBehavior : MonoBehaviour
 {
     public GameObject objectToSpawn;
-    public Transform behaviourTarget;
+    public float slowdownSpeed = 2.0f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider col)
     {
-        
+        GameObject tempGameObject = col.gameObject;
+        Destroy(tempGameObject);
     }
 
     // Update is called once per frame
@@ -26,11 +26,7 @@ public class SpawnTrapBehavior : MonoBehaviour
     {
         // Spawn an instance of the objectToSpawn
         GameObject spawnedInstance = Instantiate(objectToSpawn, transform.position, transform.rotation);
-        // Set the TrapBehaviour's target to the behaviourTarget
-        // TrapBehavior trapBehavior = spawnedInstance.GetComponent<TrapBehavior>();
-        //if (trapBehavior != null)
-        //{
-        //    trapBehavior.target = behaviourTarget;
-        //}
     }
+
+
 }

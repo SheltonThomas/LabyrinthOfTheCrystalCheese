@@ -6,7 +6,7 @@ public class KeyboardMovementBehavior : MonoBehaviour
 {
     [SerializeField]
     private CharacterController controller;
-
+    public Transform target;
     public float speed = 5.0f;
 
     // Update is called once per frame
@@ -29,5 +29,9 @@ public class KeyboardMovementBehavior : MonoBehaviour
 
         // Move
         controller.Move(moveDirection * Time.deltaTime);
+
+        //Vector3 relativePos = target.position - transform.position;
+        //Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        //transform.rotation = rotation;
     }
 }
