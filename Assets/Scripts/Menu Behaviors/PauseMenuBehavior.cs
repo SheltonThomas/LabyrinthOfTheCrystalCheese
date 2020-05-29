@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuBehavior : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    [SerializeField]
+    private GameObject pauseMenu;
 
     void Start()
     {
         //Starts with the pause menu not active.
-        pauseMenu.SetActive(false);
+        //pauseMenu.SetActive(false);
     }
 
     void Update()
@@ -34,5 +35,10 @@ public class PauseMenuBehavior : MonoBehaviour
     public void QuitGame(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
+    }
+
+    public void Options()
+    {
+        gameObject.SetActive(false);
     }
 }

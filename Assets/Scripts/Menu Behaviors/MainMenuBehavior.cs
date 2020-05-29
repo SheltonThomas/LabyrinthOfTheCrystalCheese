@@ -1,15 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuBehavior : MonoBehaviour
 {
-    public SetGoalBehavior setGoalBehavior;
+    [SerializeField]
+    private GameObject gameOptions;
 
-    public void PlayGame(int gameMode)
+    void Start()
     {
-        GameVariables.GameMode = (GameMode)gameMode;
-        setGoalBehavior.gameObject.SetActive(true);
+        GameVariables.GameLimit = 55;
+        GameVariables.GameMode = 0;
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void GameOptions()
+    {
+        gameOptions.SetActive(true);
         gameObject.SetActive(false);
     }
 

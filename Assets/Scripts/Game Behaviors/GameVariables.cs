@@ -4,14 +4,14 @@ using UnityEngine;
 
 public enum GameMode
 {
-    Timed,
-    Points
+    Time,
+    Score
 }
 
 public class GameVariables : MonoBehaviour
 {
     //Point or time limit for the game.
-    public static float gameLimit { get; set; }
+    public static float GameLimit { get; set; }
 
     //Checks to see if game is paused.
     public static bool Paused { get; set; } = false;
