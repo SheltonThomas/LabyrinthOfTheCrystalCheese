@@ -17,25 +17,21 @@ public class KeyboardMovementBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));   // Up & Down & Left & Right
-        moveDirection.Normalize();
+        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+            return;
+        }
 
+        rb.constraints = RigidbodyConstraints.None;
+
+        // Gets Facing Direction
         float moveVertical = Input.GetAxis("Vertical");
         float moveHorizontal = Input.GetAxis("Horizontal");
-
+        // Facing to move with same direction
         Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        newPosition.Normalize();
         transform.LookAt(newPosition + transform.position);
         transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
-    }
-
-    void FixedUpdate()
-    {
-        // Set Magnitude
-        MovePlayer(moveDirection);
-    }
-
-    void MovePlayer(Vector3 direction)
-    {
-        rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
     }
 }

@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 4252389453808331635}
   - component: {fileID: 6877190097915159680}
   - component: {fileID: 7465889823465504496}
-  - component: {fileID: 4113592618568434864}
+  - component: {fileID: 3434655187077366966}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   speed: 5
---- !u!114 &4113592618568434864
+--- !u!114 &3434655187077366966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,9 +138,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4252389453808331634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb0b1562ee4c4ca4f9eefc01f48ca1f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c89b5bb276e7e4a8dd69ba91ad0ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2299302286693995871, guid: f1b3d21022f95ae4e874d2d6f3c05be7,
-    type: 3}
-  slowdownSpeed: 2

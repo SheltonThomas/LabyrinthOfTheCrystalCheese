@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 5791440492347231246}
   - component: {fileID: 6222349199342955532}
   - component: {fileID: 9106671149440659254}
+  - component: {fileID: 2497463244100694619}
+  - component: {fileID: 7903596487521422958}
   m_Layer: 0
   m_Name: EnemyAI
-  m_TagString: Untagged
+  m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,3 +152,29 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2497463244100694619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633884762792418842}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0b1562ee4c4ca4f9eefc01f48ca1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 2299302286693995871, guid: f1b3d21022f95ae4e874d2d6f3c05be7,
+    type: 3}
+--- !u!114 &7903596487521422958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633884762792418842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c89b5bb276e7e4a8dd69ba91ad0ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
