@@ -54,7 +54,7 @@ public class GameOptionsBehavior : MonoBehaviour
 
     private void SetCurrentLimitText()
     {
-        goalText.text = "Current " + gameMode + " limit:";
+        currentGameLimit.text = "Current " + gameMode + " limit:";
     }
 
     //Checks to make sure the character inputted is an int.
@@ -81,11 +81,13 @@ public class GameOptionsBehavior : MonoBehaviour
     public void Timer()
     {
         GameVariables.GameMode = (GameMode)0;
+        gameMode = GameMode.Time.ToString();
     }
 
     public void Score()
     {
         GameVariables.GameMode = (GameMode)1;
+        gameMode = GameMode.Score.ToString();
     }
 
     public void Confirm()
@@ -106,6 +108,7 @@ public class GameOptionsBehavior : MonoBehaviour
                 GameVariables.GameLimit = 55;
             }
         }
+        inputField.text = null;
     }
 
     public void Back()

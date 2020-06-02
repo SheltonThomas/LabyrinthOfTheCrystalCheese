@@ -12,7 +12,7 @@ public class PauseMenuBehavior : MonoBehaviour
     void Start()
     {
         //Starts with the pause menu not active.
-        //pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 
     void Update()
