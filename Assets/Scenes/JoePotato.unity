@@ -314,7 +314,8 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 2.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5791440492347231246, guid: b92867e353bf9b744b4ca2c51c17cbb8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b92867e353bf9b744b4ca2c51c17cbb8, type: 3}
 --- !u!54 &1104942187 stripped
 Rigidbody:
@@ -352,6 +353,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1588354309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4633884762792418842, guid: b92867e353bf9b744b4ca2c51c17cbb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 630061150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1588354317
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588354309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5000001
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1671456752
 GameObject:
   m_ObjectHideFlags: 0

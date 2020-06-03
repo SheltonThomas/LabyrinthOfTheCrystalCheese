@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3643785051767139828}
   - component: {fileID: 8698959512292809040}
   - component: {fileID: 7315843707314815646}
-  - component: {fileID: 5791440492347231246}
+  - component: {fileID: 3427442780008729658}
   - component: {fileID: 6222349199342955532}
   - component: {fileID: 9106671149440659254}
   - component: {fileID: 2497463244100694619}
@@ -98,7 +98,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!143 &5791440492347231246
+--- !u!143 &3427442780008729658
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ CharacterController:
   m_GameObject: {fileID: 4633884762792418842}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5000001
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  speedCheck: 0
 --- !u!195 &9106671149440659254
 NavMeshAgent:
   m_ObjectHideFlags: 0
