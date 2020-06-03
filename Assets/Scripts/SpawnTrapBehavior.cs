@@ -5,9 +5,7 @@ using UnityEngine;
 public class SpawnTrapBehavior : MonoBehaviour
 {
     public GameObject objectToSpawn;
-    public GameObject TempSpawnInstance;
-
-    bool canPlaceTrap = true;
+    private TrapDetectionBehavior trapBehavior;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +13,6 @@ public class SpawnTrapBehavior : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             spawnTrap();
-            canPlaceTrap = false;
         }
     }
 
@@ -23,7 +20,6 @@ public class SpawnTrapBehavior : MonoBehaviour
     {
         // Spawn an instance of the objectToSpawn
         GameObject spawnedInstance = Instantiate(objectToSpawn, transform.position, transform.rotation);
-        TempSpawnInstance = spawnedInstance;
-        TempSpawnInstance.tag = "Mouse";
+        spawnedInstance.GetComponent<TrapDetectionBehavior>().Owner = transform.parent.gameObject.name;
     }
 }

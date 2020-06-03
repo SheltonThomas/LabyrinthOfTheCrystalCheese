@@ -10,10 +10,18 @@ public class KeyboardMovementBehavior : MonoBehaviour
     public Transform target;
     public float speed = 5.0f;
 
+    public bool speedCheck = false;
+    float prevSpeed;
+    float currentSpeed;
+    float speedTimer;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        prevSpeed = speed;
+        currentSpeed = speed;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,5 +41,40 @@ public class KeyboardMovementBehavior : MonoBehaviour
         newPosition.Normalize();
         transform.LookAt(newPosition + transform.position);
         transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
+
+        if (prevSpeed != currentSpeed)
+        {
+            speedCheck = true;
+            speedTimer -= Time.deltaTime;
+        }
+        else
+        {
+            // Acts like Diminishing Returns 
+            speedTimer += Time.deltaTime;
+            if (speedTimer > 3f)
+            {
+                speedTimer = 3f;
+            }
+        }
+
+        if (currentSpeed < prevSpeed && speedCheck == true)
+        {
+            if (speedTimer < 0f)
+            {
+                ResetSpeed();
+            }
+            speedCheck = false;
+        }
+    }
+
+    public void SetSpeed(float tempSpeed)
+    {
+        speed = tempSpeed;
+    }
+
+    public void ResetSpeed()
+    {
+        currentSpeed = prevSpeed;
+        speed = currentSpeed;
     }
 }

@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class TrapDetectionBehavior : MonoBehaviour
 {
+    private KeyboardMovementBehavior movementBehavior;
+    private PursueBehavior catBehavior;
+    [SerializeField]
+    public string Owner;
+
     private void OnTriggerEnter(Collider col)
     {
-        if(gameObject.tag == col.tag)
-        {
-            return;
-        }
+        movementBehavior = col.GetComponent<KeyboardMovementBehavior>();
+        catBehavior = col.GetComponent<PursueBehavior>();
 
-        GameObject tempGameObject = col.gameObject;
-        Destroy(tempGameObject);
+        // If the trap I triggered is not the owner, Then...
+        if (catBehavior != null || col.name != Owner) 
+        {
+            catBehavior.SetSpeed(1f);
+
+            GameObject tempGameObject = gameObject;
+            Destroy(tempGameObject);
+        }
     }
 }
+
+// Notes: if(col.name != Owner) <-- Player
