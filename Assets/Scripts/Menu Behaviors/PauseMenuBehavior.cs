@@ -22,6 +22,10 @@ public class PauseMenuBehavior : MonoBehaviour
         {
             pauseMenu.SetActive(true);
         }
+        else
+        {
+            pauseMenu.SetActive(false);
+        }
     }
     
     //Resumes the game.
@@ -35,6 +39,7 @@ public class PauseMenuBehavior : MonoBehaviour
     public void QuitGame(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
+        GameVariables.Paused = false;
     }
 
     public void Options()

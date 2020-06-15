@@ -8,7 +8,7 @@ public class PursueBehavior : MonoBehaviour
     public Transform target;
     NavMeshAgent agent;
 
-    public bool speedCheck = false;
+    private bool speedCheck = false;
     float prevSpeed;
     float currentSpeed;
     float speedTimer = 5f;
@@ -24,6 +24,12 @@ public class PursueBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameVariables.Paused)
+        {
+            agent.SetDestination(gameObject.transform.position);
+            return;
+        }
+
         currentSpeed = agent.speed;
         agent.SetDestination(target.position);
 

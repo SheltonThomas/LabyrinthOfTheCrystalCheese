@@ -6,8 +6,8 @@ public class TrapDetectionBehavior : MonoBehaviour
 {
     private KeyboardMovementBehavior movementBehavior;
     private PursueBehavior catBehavior;
-    [SerializeField]
-    public string Owner;
+    [HideInInspector]
+    public string Owner { get; set; }
 
     private void OnTriggerEnter(Collider col)
     {
@@ -15,7 +15,7 @@ public class TrapDetectionBehavior : MonoBehaviour
         catBehavior = col.GetComponent<PursueBehavior>();
 
         // If the trap I triggered is not the owner, Then...
-        if (catBehavior != null || col.name != Owner) 
+        if (col.name != Owner) 
         {
             catBehavior.SetSpeed(1f);
 

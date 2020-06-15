@@ -13,9 +13,9 @@ public class GameOptionsBehavior : MonoBehaviour
     [SerializeField]
     private Text currentGameMode;
     [SerializeField]
-    private GameObject menu;
-    [SerializeField]
     private Text currentGameLimit;
+    [SerializeField]
+    private GameObject mainMenu;
     [SerializeField]
     private Text gameLimit;
 
@@ -113,7 +113,7 @@ public class GameOptionsBehavior : MonoBehaviour
 
     public void Back()
     {
-        menu.SetActive(true);
+        mainMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 }
