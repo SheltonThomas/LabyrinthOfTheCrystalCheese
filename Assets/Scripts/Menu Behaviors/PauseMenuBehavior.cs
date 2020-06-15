@@ -40,6 +40,8 @@ public class PauseMenuBehavior : MonoBehaviour
     {
         SceneManager.LoadScene(sceneID);
         GameVariables.Paused = false;
+        GameVariables.CatScore = 0;
+        GameVariables.MouseScore = 0;
     }
 
     public void Options()
