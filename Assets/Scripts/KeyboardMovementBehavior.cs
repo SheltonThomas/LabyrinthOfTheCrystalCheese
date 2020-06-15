@@ -25,9 +25,24 @@ public class KeyboardMovementBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            GameVariables.Paused = !(GameVariables.Paused);
+        }
+
+        if(GameVariables.Paused)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation | 
+                            RigidbodyConstraints.FreezePositionX | 
+                            RigidbodyConstraints.FreezePositionY;
+            return;
+        }
+
         if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
         {
-            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+            rb.constraints = RigidbodyConstraints.FreezeRotation | 
+                            RigidbodyConstraints.FreezePositionX | 
+                            RigidbodyConstraints.FreezePositionY;
             return;
         }
 
