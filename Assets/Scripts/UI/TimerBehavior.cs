@@ -32,6 +32,11 @@ public class TimerBehavior : MonoBehaviour
         if(!GameVariables.Paused)
         {
             UpdateTimer();
+            if(timeRemaining <= 0)
+            {
+                timeRemaining = 0;
+                //Add GameOver Screen
+            }
         }
     }
 
