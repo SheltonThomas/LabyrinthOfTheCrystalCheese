@@ -10,7 +10,10 @@ public class SpawnTrapBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (GameVariables.Paused || GameVariables.GameOver)
+            return;
+
+        if (Input.GetButtonDown("Jump") && GameVariables.MouseTraps != 0)
         {
             spawnTrap();
         }

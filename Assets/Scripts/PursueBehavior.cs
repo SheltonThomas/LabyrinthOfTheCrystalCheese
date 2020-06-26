@@ -24,7 +24,7 @@ public class PursueBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameVariables.Paused)
+        if (GameVariables.Paused || GameVariables.GameOver)
         {
             agent.SetDestination(gameObject.transform.position);
             return;
