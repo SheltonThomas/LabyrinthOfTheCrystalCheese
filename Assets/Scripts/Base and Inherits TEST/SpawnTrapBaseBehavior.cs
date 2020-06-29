@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnTrapBehavior : MonoBehaviour
+public class SpawnTrapBaseBehavior : MonoBehaviour
 {
     public GameObject objectToSpawn;
     private TrapDetectionBehavior trapBehavior;
@@ -10,13 +10,10 @@ public class SpawnTrapBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("pTrapOne"))   // Other one is >> pTrapTwo <<
-        {
-            spawnTrap();
-        }
+        spawnTrap();
     }
 
-    void spawnTrap()
+    public void spawnTrap()
     {
         // Spawn an instance of the objectToSpawn
         GameObject spawnedInstance = Instantiate(objectToSpawn, transform.position, transform.rotation);

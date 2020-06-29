@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardMovementBehavior : MonoBehaviour
+public class MovementBaseBehavior : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody rb;
+    public Rigidbody rb;
     public Vector3 moveDirection;
     public Transform target;
     public float speed = 5.0f;
 
     public bool speedCheck = false;
-    float prevSpeed;
-    float currentSpeed;
-    float speedTimer;
+    public float prevSpeed;
+    public float currentSpeed;
+    public float speedTimer;
 
+    // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -27,44 +28,17 @@ public class KeyboardMovementBehavior : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if(!GameVariables.GameOver)
-                GameVariables.Paused = !(GameVariables.Paused);
+            GameVariables.Paused = !(GameVariables.Paused);
         }
 
-        if(GameVariables.Paused || GameVariables.GameOver)
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation | 
-                            RigidbodyConstraints.FreezePositionX | 
-                            RigidbodyConstraints.FreezePositionY;
-            return;
-        }
-
-        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation | 
-                            RigidbodyConstraints.FreezePositionX | 
-                            RigidbodyConstraints.FreezePositionY;
-            return;
-        }
-
-        if (!Input.GetButton("HorizontalTwo") && !Input.GetButton("VerticalTwo"))
+        if (GameVariables.Paused)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation |
                             RigidbodyConstraints.FreezePositionX |
                             RigidbodyConstraints.FreezePositionY;
             return;
         }
-
         rb.constraints = RigidbodyConstraints.None;
-
-        // Gets Facing Direction
-        float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        // Facing to move with same direction
-        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        newPosition.Normalize();
-        transform.LookAt(newPosition + transform.position);
-        transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
 
         if (prevSpeed != currentSpeed)
         {
