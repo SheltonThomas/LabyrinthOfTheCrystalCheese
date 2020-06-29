@@ -46,6 +46,14 @@ public class KeyboardMovementBehavior : MonoBehaviour
             return;
         }
 
+        if (!Input.GetButton("HorizontalTwo") && !Input.GetButton("VerticalTwo"))
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotation |
+                            RigidbodyConstraints.FreezePositionX |
+                            RigidbodyConstraints.FreezePositionY;
+            return;
+        }
+
         rb.constraints = RigidbodyConstraints.None;
 
         // Gets Facing Direction
@@ -56,6 +64,15 @@ public class KeyboardMovementBehavior : MonoBehaviour
         newPosition.Normalize();
         transform.LookAt(newPosition + transform.position);
         transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
+
+
+        float moveVerticalTwo = Input.GetAxis("VerticalTwo");
+        float moveHorizontalTwo = Input.GetAxis("HorizontalTwo");
+        // Facing to move with same direction
+        Vector3 newPositionTwo = new Vector3(moveHorizontalTwo, 0.0f, moveVerticalTwo);
+        newPositionTwo.Normalize();
+        transform.LookAt(newPositionTwo + transform.position);
+        transform.Translate(newPositionTwo * speed * Time.deltaTime, Space.World);
 
         if (prevSpeed != currentSpeed)
         {
