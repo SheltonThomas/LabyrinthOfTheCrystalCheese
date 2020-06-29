@@ -38,11 +38,19 @@ public class GameOverBehavior : MonoBehaviour
     {
         SceneManager.LoadScene(2);
         GameVariables.GameOver = false;
+        GameVariables.CatScore = 0;
+        GameVariables.MouseScore = 0;
+        GameVariables.CatTraps = 0;
+        GameVariables.MouseTraps = 0;
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
         GameVariables.GameOver = false;
+        GameVariables.CatScore = 0;
+        GameVariables.MouseScore = 0;
+        GameVariables.CatTraps = 0;
+        GameVariables.MouseTraps = 0;
     }
 }
