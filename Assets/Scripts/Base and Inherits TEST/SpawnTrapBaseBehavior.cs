@@ -13,7 +13,7 @@ public class SpawnTrapBaseBehavior : MonoBehaviour
         spawnTrap();
     }
 
-    void spawnTrap()
+    public void spawnTrap()
     {
         // Spawn an instance of the objectToSpawn
         GameObject spawnedInstance = Instantiate(objectToSpawn, transform.position, transform.rotation);

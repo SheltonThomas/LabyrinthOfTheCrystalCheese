@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class MousePlaceTrapBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private SpawnTrapBaseBehavior trapSpawnBehavior;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("pTrapOne"))
+        {
+            trapSpawnBehavior.spawnTrap();
+        }
     }
 }
