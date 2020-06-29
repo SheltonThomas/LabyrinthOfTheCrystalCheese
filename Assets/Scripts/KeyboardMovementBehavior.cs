@@ -47,14 +47,6 @@ public class KeyboardMovementBehavior : MonoBehaviour
             return;
         }
 
-        if (!Input.GetButton("HorizontalTwo") && !Input.GetButton("VerticalTwo"))
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation |
-                            RigidbodyConstraints.FreezePositionX |
-                            RigidbodyConstraints.FreezePositionY;
-            return;
-        }
-
         rb.constraints = RigidbodyConstraints.None;
 
         // Gets Facing Direction

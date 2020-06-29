@@ -19,7 +19,7 @@ public class TimerBehavior : MonoBehaviour
 
     void Start()
     {
-        startTime = GameVariables.GameLimit;
+        startTime = 1000;
         //Sets time.
         timeRemaining = startTime;
     }
