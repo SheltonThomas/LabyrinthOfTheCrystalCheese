@@ -18,14 +18,8 @@ public class PauseMenuBehavior : MonoBehaviour
     void Update()
     {
         //If game is pause, set pause menu to active.
-        if(GameVariables.Paused)
-        {
-            pauseMenu.SetActive(true);
-        }
-        else
-        {
-            pauseMenu.SetActive(false);
-        }
+        pauseMenu.SetActive(GameVariables.Paused);
+        
     }
     
     //Resumes the game.

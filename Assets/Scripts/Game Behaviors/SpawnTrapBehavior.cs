@@ -14,7 +14,6 @@ public class SpawnTrapBehavior : MonoBehaviour
         {
             spawnTrap();
         }
-
     }
 
     void spawnTrap()

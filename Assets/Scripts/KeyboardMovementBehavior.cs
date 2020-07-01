@@ -27,10 +27,11 @@ public class KeyboardMovementBehavior : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            GameVariables.Paused = !(GameVariables.Paused);
+            if(!GameVariables.GameOver)
+                GameVariables.Paused = !(GameVariables.Paused);
         }
 
-        if(GameVariables.Paused)
+        if(GameVariables.Paused || GameVariables.GameOver)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation | 
                             RigidbodyConstraints.FreezePositionX | 
@@ -42,14 +43,6 @@ public class KeyboardMovementBehavior : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation | 
                             RigidbodyConstraints.FreezePositionX | 
-                            RigidbodyConstraints.FreezePositionY;
-            return;
-        }
-
-        if (!Input.GetButton("HorizontalTwo") && !Input.GetButton("VerticalTwo"))
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation |
-                            RigidbodyConstraints.FreezePositionX |
                             RigidbodyConstraints.FreezePositionY;
             return;
         }

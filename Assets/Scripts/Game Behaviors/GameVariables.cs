@@ -15,6 +15,7 @@ public class GameVariables : MonoBehaviour
 
     //Checks to see if game is paused.
     public static bool Paused { get; set; } = false;
+    public static bool GameOver { get; set; } = false;
 
     //Used for getting and setting the game mode.
     public static GameMode GameMode { get; set; }
@@ -22,4 +23,7 @@ public class GameVariables : MonoBehaviour
     //Keeps track of the players' scores.
     public static int CatScore { get; set; } = 0;
     public static int MouseScore { get; set; } = 0;
+
+    public static int CatTraps { get; set; } = 0;
+    public static int MouseTraps { get; set; } = 0;
 }
