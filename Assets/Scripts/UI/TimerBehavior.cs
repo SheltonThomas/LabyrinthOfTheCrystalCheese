@@ -19,7 +19,6 @@ public class TimerBehavior : MonoBehaviour
 
     void Start()
     {
-        startTime = 1000;
         //Sets time.
         timeRemaining = startTime;
     }
