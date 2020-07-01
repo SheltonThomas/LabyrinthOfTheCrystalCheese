@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9102859194431830320}
-  - component: {fileID: 2891151394614350877}
+  - component: {fileID: 3221380406338281732}
   m_Layer: 0
   m_Name: InvisibleBag
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 5366117790212437444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2891151394614350877
+--- !u!114 &3221380406338281732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,10 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4002201672302076721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb0b1562ee4c4ca4f9eefc01f48ca1f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 24744e22c3d10ca45b1b0923d3c164b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2727623197147505293, guid: 855e2c19502e5fb47a78ff0623b30153,
+  objectToSpawn: {fileID: 2299302286693995871, guid: f1b3d21022f95ae4e874d2d6f3c05be7,
     type: 3}
 --- !u!1 &4633884762792418842
 GameObject:
@@ -58,8 +58,10 @@ GameObject:
   - component: {fileID: 8698959512292809040}
   - component: {fileID: 7315843707314815646}
   - component: {fileID: 1697863218967992125}
+  - component: {fileID: 8185642963974813206}
+  - component: {fileID: 1625503781792682508}
   m_Layer: 0
-  m_Name: EnemyAI
+  m_Name: Cat
   m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,3 +165,30 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8185642963974813206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633884762792418842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4228920e3f2d56f49ae29725b16ebe3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+--- !u!114 &1625503781792682508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633884762792418842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24744e22c3d10ca45b1b0923d3c164b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 2299302286693995871, guid: f1b3d21022f95ae4e874d2d6f3c05be7,
+    type: 3}
