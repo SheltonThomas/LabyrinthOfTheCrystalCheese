@@ -1,57 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CatMovementBehavior : MonoBehaviour, IControlable
 {
-    public Rigidbody rb { get; set; }
-    public Vector3 moveDirection { get; set; }
-    public Transform target { get; set; }
-    public float speed { get; set; }
-
-    public bool speedCheck { get; set; }
-    public float prevSpeed { get; set; }
-    public float currentSpeed { get; set; }
-    public float speedTimer { get; set; }
+    [HideInInspector]
+    public NavMeshAgent Agent { get; set; }
+    public float Speed { get; set; }
+    public float SavedSpeed { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
-        prevSpeed = speed;
-        currentSpeed = speed;
+        Agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!Input.GetButton("HorizontalTwo") && !Input.GetButton("VerticalTwo"))
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation |
-                            RigidbodyConstraints.FreezePositionX |
-                            RigidbodyConstraints.FreezePositionY;
-            return;
-        }
-        rb.constraints = RigidbodyConstraints.None;
-
-        // Gets Facing Direction
-        float moveVertical = Input.GetAxis("VerticalTwo");
-        float moveHorizontal = Input.GetAxis("HorizontalTwo");
-        // Facing to move with same direction
-        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        newPosition.Normalize();
-        transform.LookAt(newPosition + transform.position);
-        transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
+       
     }
 
-    public void SetSpeed(float tempSpeed)
+    public void SaveCurrentSpeed()
     {
-        speed = tempSpeed;
+        Speed = SavedSpeed;
     }
 
-    public void ResetSpeed()
+    public void SetCurrentSpeed()
     {
-        currentSpeed = prevSpeed;
-        speed = currentSpeed;
+        Speed = SavedSpeed;
     }
 }
