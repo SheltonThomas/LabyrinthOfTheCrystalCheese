@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 8505294730135125081}
   - component: {fileID: 6198099672750738020}
   - component: {fileID: 6087116851174004912}
+  - component: {fileID: 8538272890161602061}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -212,6 +213,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8538272890161602061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239697887818241516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bd309c30cd5c140b998059cf971f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2975817734443857516
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +236,6 @@ GameObject:
   - component: {fileID: 5708448899817229103}
   - component: {fileID: 6823084268376902125}
   - component: {fileID: 7560230824197948552}
-  - component: {fileID: 6994799372458236816}
   m_Layer: 0
   m_Name: InvisibleBackpack
   m_TagString: Untagged
@@ -273,15 +285,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 2299302286693995871, guid: f1b3d21022f95ae4e874d2d6f3c05be7,
     type: 3}
---- !u!114 &6994799372458236816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975817734443857516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15bd309c30cd5c140b998059cf971f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
