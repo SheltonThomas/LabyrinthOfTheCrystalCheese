@@ -4326,6 +4326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1625503781792682508, guid: b92867e353bf9b744b4ca2c51c17cbb8,
+        type: 3}
+      propertyPath: spawnLocation
+      value: 
+      objectReference: {fileID: 633570723}
     - target: {fileID: 4633884762792418842, guid: b92867e353bf9b744b4ca2c51c17cbb8,
         type: 3}
       propertyPath: m_Name
@@ -4334,7 +4339,11 @@ PrefabInstance:
     - target: {fileID: 5366117790212437444, guid: b92867e353bf9b744b4ca2c51c17cbb8,
         type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< Updated upstream
       value: 12.28
+=======
+      value: 11.67
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5366117790212437444, guid: b92867e353bf9b744b4ca2c51c17cbb8,
         type: 3}
@@ -4344,7 +4353,11 @@ PrefabInstance:
     - target: {fileID: 5366117790212437444, guid: b92867e353bf9b744b4ca2c51c17cbb8,
         type: 3}
       propertyPath: m_LocalPosition.z
+<<<<<<< Updated upstream
       value: -12.19
+=======
+      value: -11.9
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5366117790212437444, guid: b92867e353bf9b744b4ca2c51c17cbb8,
         type: 3}
@@ -4386,7 +4399,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6051083800004540220, guid: b92867e353bf9b744b4ca2c51c17cbb8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b92867e353bf9b744b4ca2c51c17cbb8, type: 3}
 --- !u!1001 &480754656
 PrefabInstance:
@@ -6187,6 +6201,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6093523638512609517, guid: f6781fc5d8f3d8741af9e1ecf78264b3,
     type: 3}
   m_PrefabInstance: {fileID: 626035676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &633570723 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9102859194431830320, guid: b92867e353bf9b744b4ca2c51c17cbb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 470588414}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &636961311
 PrefabInstance:
@@ -17060,7 +17080,11 @@ PrefabInstance:
     - target: {fileID: 7946962559795321749, guid: e12b131f517b03640baad3499c53f907,
         type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< Updated upstream
       value: -17.07
+=======
+      value: -18.63
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 7946962559795321749, guid: e12b131f517b03640baad3499c53f907,
         type: 3}
@@ -17070,7 +17094,11 @@ PrefabInstance:
     - target: {fileID: 7946962559795321749, guid: e12b131f517b03640baad3499c53f907,
         type: 3}
       propertyPath: m_LocalPosition.z
+<<<<<<< Updated upstream
       value: 11.03
+=======
+      value: 12.18
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 7946962559795321749, guid: e12b131f517b03640baad3499c53f907,
         type: 3}
