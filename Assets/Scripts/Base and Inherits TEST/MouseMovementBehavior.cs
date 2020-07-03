@@ -1,55 +1,80 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MouseMovementBehavior : MonoBehaviour, IControlable
 {
-    public Rigidbody rb { get; set; }
-    public Vector3 moveDirection { get; set; }
-    public Transform target { get; set; }
-    public float speed { get; set; }
+    public float Speed { get; set; }
+    [HideInInspector]
+    public NavMeshAgent Agent { get; set; }
+    public float SavedSpeed { get; set; }
+    public bool Trapped { get; set; }
+    public float SlowDuration { get; set; }
 
-    public bool speedCheck { get; set; }
-    public float prevSpeed { get; set; }
-    public float currentSpeed { get; set; }
-    public float speedTimer { get; set; }
-
+    // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
-        prevSpeed = speed;
-        currentSpeed = speed;
+        Agent = GetComponent<NavMeshAgent>();
     }
-    
+
+    // Update is called once per frame
     void Update()
     {
-        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
+        if (Input.GetButton("Cancel") && !GameVariables.Paused)
         {
-            rb.constraints = RigidbodyConstraints.FreezeRotation |
-                            RigidbodyConstraints.FreezePositionX |
-                            RigidbodyConstraints.FreezePositionY;
+            GameVariables.Paused = true;
+            SaveCurrentSpeed();
+        }
+
+        if (Input.GetButton("Cancel") && GameVariables.Paused)
+        {
+            GameVariables.Paused = false;
+            SetCurrentSpeed();
+        }
+
+        if ((Input.GetButtonUp("Vertical") && Input.GetButtonUp("Horizontal")) || GameVariables.Paused)
+        {
+            Agent.SetDestination(transform.position);
             return;
         }
-        rb.constraints = RigidbodyConstraints.None;
 
-        // Gets Facing Direction
-        float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        // Facing to move with same direction
-        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        newPosition.Normalize();
-        transform.LookAt(newPosition + transform.position);
-        transform.Translate(newPosition * speed * Time.deltaTime, Space.World);
+        float verticalMovement = Input.GetAxis("VerticalTwo");
+        float horizontalMovement = Input.GetAxis("HorizontalTwo");
+
+        Vector3 movement = new Vector3(horizontalMovement, 0, verticalMovement);
+
+        movement.Normalize();
+
+        movement += transform.position;
+
+        Agent.SetDestination(movement);
     }
 
-    public void SetSpeed(float tempSpeed)
+    public void SaveCurrentSpeed()
     {
-        speed = tempSpeed;
+        Speed = SavedSpeed;
     }
 
-    public void ResetSpeed()
+    public void SetCurrentSpeed()
     {
-        currentSpeed = prevSpeed;
-        speed = currentSpeed;
+        Speed = SavedSpeed;
+    }
+
+    public void TrappedSpeed(float slowAmount, float slowDuration)
+    {
+        if (Trapped)
+        {
+            float maxSpeed = Speed - slowAmount;
+            Agent.speed = maxSpeed;
+
+            SlowDuration += Time.deltaTime;
+
+            if (SlowDuration >= slowDuration)
+            {
+                SlowDuration = 0;
+                Trapped = false;
+            }
+        }
     }
 }
