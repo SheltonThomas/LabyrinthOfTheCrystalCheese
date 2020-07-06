@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class TrapDetectionBehavior : MonoBehaviour
 {
-    private KeyboardMovementBehavior movementBehavior;
-    [HideInInspector]
+    private IControlable agentController;
+
     public string Owner { get; set; }
 
     private void OnTriggerEnter(Collider col)
     {
-        movementBehavior = col.GetComponent<KeyboardMovementBehavior>();
-
+        agentController = col.gameObject.GetComponent<IControlable>();
         // If the trap I triggered is not the owner, Then...
         if (col.name != Owner) 
         {
-            movementBehavior.SetSpeed(1f);
-
-            GameObject tempGameObject = gameObject;
-            Destroy(tempGameObject);
+            agentController.Speed = 1;
+            
+            Destroy(gameObject);
         }
     }
 }
