@@ -25,16 +25,25 @@ public class PursueBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameVariables.Paused || GameVariables.GameOver)
-        {
-            agent.SetDestination(gameObject.transform.position);
-            return;
-        }
+        //if (GameVariables.Paused || GameVariables.GameOver)
+        //{
+        //    agent.SetDestination(gameObject.transform.position);
+        //    return;
+        //}
 
         currentSpeed = agent.speed;
         agent.SetDestination(target.position);
 
-        if (prevSpeed < currentSpeed)
+        if(GameVariables.CatScore < GameVariables.MouseScore)
+        {
+            currentSpeed += 0.2f;
+        }
+        else if (GameVariables.CatScore > GameVariables.MouseScore)
+        {
+            ResetSpeed();
+        }
+
+        if (prevSpeed < currentSpeed && speedCheck == false)
         {
             speedCheck = true;
             speedTimer -= Time.deltaTime;
@@ -42,7 +51,7 @@ public class PursueBehavior : MonoBehaviour
         else if(rageCounter == 10)
         {
             // If cat hits a certain amount of traps, Gain a temporary burst of speed
-            currentSpeed = 7.5f;
+            currentSpeed = 40f;
 
             speedCheck = true;
             speedTimer = 5f;

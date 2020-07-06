@@ -25,5 +25,5 @@ public class GameVariables : MonoBehaviour
     public static int MouseScore { get; set; } = 0;
 
     public static int CatTraps { get; set; } = 0;
-    public static int MouseTraps { get; set; } = 0;
+    public static int MouseTraps { get; set; } = 1;
 }

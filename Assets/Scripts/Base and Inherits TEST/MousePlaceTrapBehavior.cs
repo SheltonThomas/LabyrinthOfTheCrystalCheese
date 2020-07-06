@@ -5,14 +5,21 @@ using UnityEngine;
 public class MousePlaceTrapBehavior : MonoBehaviour
 {
     public GameObject objectToSpawn;
+    private TrapDetectionBehavior trapBehavior;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("pTrapTwo") && GameVariables.MouseTraps > 0)
+        if (Input.GetButtonDown("pTrapOne") && GameVariables.MouseTraps > 0)   // Other one is >> pTrapTwo <<
         {
-            GameObject trapInstance = Instantiate(objectToSpawn, gameObject.transform);
-            trapInstance.GetComponent<TrapDetectionBehavior>().Owner = gameObject.name;
+            spawnTrap();
         }
+    }
+
+    void spawnTrap()
+    {
+        // Spawn an instance of the objectToSpawn
+        GameObject spawnedInstance = Instantiate(objectToSpawn, transform.position, transform.rotation);
+        spawnedInstance.GetComponent<TrapDetectionBehavior>().Owner = transform.parent.gameObject.name;
     }
 }
