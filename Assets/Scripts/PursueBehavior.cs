@@ -12,10 +12,9 @@ public class PursueBehavior : MonoBehaviour
     float prevSpeed;
     float currentSpeed;
     float speedTimer = 5f;
-<<<<<<< HEAD
     int rageCounter = 0;
-=======
->>>>>>> origin/TempBuild
+    bool rageActive = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,81 +27,86 @@ public class PursueBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
         //if (GameVariables.Paused || GameVariables.GameOver)
         //{
         //    agent.SetDestination(gameObject.transform.position);
         //    return;
         //}
-=======
+
         if (GameVariables.Paused)
         {
             agent.SetDestination(gameObject.transform.position);
             return;
         }
->>>>>>> origin/TempBuild
 
         currentSpeed = agent.speed;
         agent.SetDestination(target.position);
 
-<<<<<<< HEAD
         if(GameVariables.CatScore < GameVariables.MouseScore)
         {
-            currentSpeed += 0.2f;
+            currentSpeed += 0.02f;
         }
         else if (GameVariables.CatScore > GameVariables.MouseScore)
         {
             ResetSpeed();
         }
 
-        if (prevSpeed < currentSpeed && speedCheck == false)
+        if (currentSpeed < prevSpeed && speedCheck == false)
         {
             speedCheck = true;
             speedTimer -= Time.deltaTime;
         }
-        else if(rageCounter == 10)
+        else if (rageCounter >= 10 && rageActive == false)
         {
             // If cat hits a certain amount of traps, Gain a temporary burst of speed
-            currentSpeed = 40f;
-
-            speedCheck = true;
-            speedTimer = 5f;
-=======
-        if (prevSpeed != currentSpeed)
-        {
-            speedCheck = true;
->>>>>>> origin/TempBuild
-            speedTimer -= Time.deltaTime;
+            SetSpeed(75f);
+            rageActive = true;
         }
         else
         {
             // Acts like Diminishing Returns 
             speedTimer += Time.deltaTime;
-            if (speedTimer > 3f)
+            if (speedTimer > 3f && rageCounter < 10)
             {
                 speedTimer = 3f;
+            }
+            else if(rageCounter >= 10)
+            {
+                if (speedTimer > 5f)
+                {
+                    speedTimer = 5f;
+                }
             }
         }
 
         if (currentSpeed < prevSpeed && speedCheck == true)
         {
-            if(speedTimer < 0f)
+            if (rageActive != true)
             {
-                ResetSpeed();  
+                if (speedTimer < 0f)
+                {
+                    ResetSpeed();
+                    rageCounter++;
+                }
             }
-<<<<<<< HEAD
-            rageCounter++;
             speedCheck = false;
         }
-        else if(rageCounter == 10 && speedCheck == true)
+        else if(rageCounter >= 10)
         {
-            if(speedTimer < 0f)
+            if(speedTimer >= 5f)
             {
                 ResetSpeed();
+                rageCounter = 0;
+                rageActive = false;
             }
-            rageCounter = 0;
-=======
->>>>>>> origin/TempBuild
+            speedCheck = false;
+        }
+
+        // If for some reason ResetSpeed gets stuck
+        if(speedTimer < -1f && currentSpeed < prevSpeed)
+        {
+            ResetSpeed();
+            speedTimer = 3;
             speedCheck = false;
         }
     }
