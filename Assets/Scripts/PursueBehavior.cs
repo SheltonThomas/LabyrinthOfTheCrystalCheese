@@ -12,6 +12,7 @@ public class PursueBehavior : MonoBehaviour
     float prevSpeed;
     float currentSpeed;
     float speedTimer = 5f;
+    int rageCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +34,18 @@ public class PursueBehavior : MonoBehaviour
         currentSpeed = agent.speed;
         agent.SetDestination(target.position);
 
-        if (prevSpeed != currentSpeed)
+        if (prevSpeed < currentSpeed)
         {
             speedCheck = true;
+            speedTimer -= Time.deltaTime;
+        }
+        else if(rageCounter == 10)
+        {
+            // If cat hits a certain amount of traps, Gain a temporary burst of speed
+            currentSpeed = 7.5f;
+
+            speedCheck = true;
+            speedTimer = 5f;
             speedTimer -= Time.deltaTime;
         }
         else
@@ -54,6 +64,16 @@ public class PursueBehavior : MonoBehaviour
             {
                 ResetSpeed();  
             }
+            rageCounter++;
+            speedCheck = false;
+        }
+        else if(rageCounter == 10 && speedCheck == true)
+        {
+            if(speedTimer < 0f)
+            {
+                ResetSpeed();
+            }
+            rageCounter = 0;
             speedCheck = false;
         }
     }
