@@ -16,7 +16,7 @@ public class GameModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameVariables.GameMode == GameMode.Score)
+        if (GameVariables.GameMode == GameMode.Score)
         {
             timerUI.SetActive(false);
             ScoreUIText.gameObject.SetActive(true);
