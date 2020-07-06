@@ -11,7 +11,9 @@ public class MouseMovementBehavior : MonoBehaviour, IControlable
     public NavMeshAgent Agent { get; set; }
     public float SavedSpeed { get; set; }
     public bool Trapped { get; set; }
+    public bool Caught { get; set; }
     public float SlowDuration { get; set; }
+    public float HasteDuration { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +80,23 @@ public class MouseMovementBehavior : MonoBehaviour, IControlable
             {
                 SlowDuration = 0;
                 Trapped = false;
+            }
+        }
+    }
+
+    public void CaughtSpeed(float hasteAmount, float hasteDuration)
+    {
+        if (Caught)
+        {
+            float maxSpeed = Speed + hasteAmount;
+            Agent.speed = maxSpeed;
+
+            HasteDuration += Time.deltaTime;
+
+            if(HasteDuration >= hasteDuration)
+            {
+                HasteDuration = 0;
+                Caught = false;
             }
         }
     }
