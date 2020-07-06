@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 21dc170a1260a534bbb908b4c6fc710f
+=======
+guid: b6a5c13dd81f1104ca490d0ef1c0c673
+>>>>>>> origin/TempBuild
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

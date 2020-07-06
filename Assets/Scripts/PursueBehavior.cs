@@ -12,7 +12,10 @@ public class PursueBehavior : MonoBehaviour
     float prevSpeed;
     float currentSpeed;
     float speedTimer = 5f;
+<<<<<<< HEAD
     int rageCounter = 0;
+=======
+>>>>>>> origin/TempBuild
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +28,24 @@ public class PursueBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         //if (GameVariables.Paused || GameVariables.GameOver)
         //{
         //    agent.SetDestination(gameObject.transform.position);
         //    return;
         //}
+=======
+        if (GameVariables.Paused)
+        {
+            agent.SetDestination(gameObject.transform.position);
+            return;
+        }
+>>>>>>> origin/TempBuild
 
         currentSpeed = agent.speed;
         agent.SetDestination(target.position);
 
+<<<<<<< HEAD
         if(GameVariables.CatScore < GameVariables.MouseScore)
         {
             currentSpeed += 0.2f;
@@ -55,6 +67,11 @@ public class PursueBehavior : MonoBehaviour
 
             speedCheck = true;
             speedTimer = 5f;
+=======
+        if (prevSpeed != currentSpeed)
+        {
+            speedCheck = true;
+>>>>>>> origin/TempBuild
             speedTimer -= Time.deltaTime;
         }
         else
@@ -73,6 +90,7 @@ public class PursueBehavior : MonoBehaviour
             {
                 ResetSpeed();  
             }
+<<<<<<< HEAD
             rageCounter++;
             speedCheck = false;
         }
@@ -83,6 +101,8 @@ public class PursueBehavior : MonoBehaviour
                 ResetSpeed();
             }
             rageCounter = 0;
+=======
+>>>>>>> origin/TempBuild
             speedCheck = false;
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class MouseMovementBehavior : MonoBehaviour, IControlable
 {
+    public float speed;
     public float Speed { get; set; }
     [HideInInspector]
     public NavMeshAgent Agent { get; set; }
@@ -15,7 +16,10 @@ public class MouseMovementBehavior : MonoBehaviour, IControlable
     // Start is called before the first frame update
     void Start()
     {
+        Speed = speed;
         Agent = GetComponent<NavMeshAgent>();
+        Agent.speed = Speed;
+        Agent.acceleration = 1000;
     }
 
     // Update is called once per frame
