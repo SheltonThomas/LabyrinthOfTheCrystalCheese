@@ -6,7 +6,14 @@ public class TrapDetectionBehavior : MonoBehaviour
 {
     private IControlable agentController;
 
+    private Animator animator;
+
     public string Owner { get; set; }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter(Collider col)
     {
@@ -15,10 +22,13 @@ public class TrapDetectionBehavior : MonoBehaviour
         if (col.name != Owner) 
         {
             agentController.Speed = 1;
-            
-            Destroy(gameObject);
+
+            animator.SetTrigger("Triggered");
+
+            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Triggered"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
-
-// Notes: if(col.name != Owner) <-- Player

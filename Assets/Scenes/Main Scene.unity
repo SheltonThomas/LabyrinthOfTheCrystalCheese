@@ -519,7 +519,7 @@ PrefabInstance:
     - target: {fileID: 2088897167923481789, guid: 5f5b3b2afee533848950ae41cc571e00,
         type: 3}
       propertyPath: m_Name
-      value: Ground2.0
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3073171493131189934, guid: 5f5b3b2afee533848950ae41cc571e00,
         type: 3}
