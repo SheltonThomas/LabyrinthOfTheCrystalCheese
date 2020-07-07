@@ -18,7 +18,6 @@ public class CatMovementBehavior : MonoBehaviour, IControlable
         Speed = speed;
         Agent = GetComponent<NavMeshAgent>();
         Agent.speed = Speed;
-        Agent.acceleration = 1000;
     }
 
     // Update is called once per frame
