@@ -11,12 +11,14 @@ public class CatMovementBehavior : MonoBehaviour, IControlable
     public float SavedSpeed { get; set; }
     public bool Trapped { get; set; }
     public float SlowDuration { get; set; }
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         Speed = speed;
         Agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         Agent.speed = Speed;
     }
 
@@ -77,6 +79,7 @@ public class CatMovementBehavior : MonoBehaviour, IControlable
                 Agent.speed = Speed;
                 SlowDuration = 0;
                 Trapped = false;
+                animator.SetBool("Trapped", false);
             }
         }
     }
