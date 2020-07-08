@@ -10,7 +10,7 @@ public class SpawnTrapBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("pTrapOne"))   // Other one is >> pTrapTwo <<
         {
             spawnTrap();
         }

@@ -11,12 +11,32 @@ public class PointsBehavior : MonoBehaviour
         if(other.tag == "Mouse")
         {
             GameVariables.MouseScore += 10;
+
+            if(GameVariables.MouseScore % 100 == 0)
+            {
+                GameVariables.MouseTraps++;
+            }
+
+            if(GameVariables.MouseScore == GameVariables.GameLimit && GameVariables.GameMode == GameMode.Score)
+            {
+                GameVariables.GameOver = true;
+            }
             Destroy(gameObject);
         }
 
         if (other.tag == "Cat")
         {
             GameVariables.CatScore += 10;
+
+            if (GameVariables.CatScore % 100 == 0)
+            {
+                GameVariables.CatTraps++;
+            }
+
+            if (GameVariables.CatScore == GameVariables.GameLimit && GameVariables.GameMode == GameMode.Score)
+            {
+                GameVariables.GameOver = true;
+            }
             Destroy(gameObject);
         }
     }
