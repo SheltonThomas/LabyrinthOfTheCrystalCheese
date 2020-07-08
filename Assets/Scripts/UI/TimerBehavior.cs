@@ -32,14 +32,25 @@ public class TimerBehavior : MonoBehaviour
         if(!GameVariables.Paused)
         {
             UpdateTimer();
+
+            if (timeRemaining == 0)
+            {
+                GameVariables.GameOver = true;
+            }
+            else
+            {
+                GameVariables.GameOver = false;
+            }
         }
     }
 
     public void UpdateTimer()
     {
-        if (!GameVariables.Paused)
+        if (!GameVariables.Paused || !GameVariables.GameOver)
         {
             timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 0)
+                timeRemaining = 0;
         }
     }
 

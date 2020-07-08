@@ -1,28 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TrapDetectionBehavior : MonoBehaviour
 {
-    private KeyboardMovementBehavior movementBehavior;
-    private PursueBehavior catBehavior;
-    [HideInInspector]
+    private NavMeshAgent agentController;
+
+    private Animator animator;
+
     public string Owner { get; set; }
 
-    private void OnTriggerEnter(Collider col)
+    private bool delete = false;
+
+    private void Start()
     {
-        movementBehavior = col.GetComponent<KeyboardMovementBehavior>();
-        catBehavior = col.GetComponent<PursueBehavior>();
+        animator = GetComponent<Animator>();
+    }
 
-        // If the trap I triggered is not the owner, Then...
-        if (col.name != Owner) 
+    private void Update()
+    {
+        if (delete && animator.GetCurrentAnimatorStateInfo(0).IsName("Closing"))
         {
-            catBehavior.SetSpeed(1f);
+            Destroy(gameObject);
+        }
+    }
 
-            GameObject tempGameObject = gameObject;
-            Destroy(tempGameObject);
+    private void OnTriggerEnter(Collider collision)
+    {
+        // If the trap I triggered is not the owner, Then...
+        if (collision.gameObject.name == "Cat")
+        {
+            agentController = collision.gameObject.GetComponent<NavMeshAgent>();
+            agentController.speed /= 2;
+
+            animator.SetTrigger("Triggered");
+            delete = true;
         }
     }
 }
-
-// Notes: if(col.name != Owner) <-- Player
