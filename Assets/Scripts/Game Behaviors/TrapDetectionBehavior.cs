@@ -1,34 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TrapDetectionBehavior : MonoBehaviour
 {
-    private IControlable agentController;
+    private NavMeshAgent agentController;
 
     private Animator animator;
 
     public string Owner { get; set; }
+
+    private bool delete = false;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void Update()
     {
-        agentController = col.gameObject.GetComponent<IControlable>();
-        // If the trap I triggered is not the owner, Then...
-        if (col.name != Owner) 
+        if (delete && animator.GetCurrentAnimatorStateInfo(0).IsName("Closing"))
         {
-            agentController.Speed = 1;
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        // If the trap I triggered is not the owner, Then...
+        if (collision.gameObject.name == "Cat")
+        {
+            agentController = collision.gameObject.GetComponent<NavMeshAgent>();
+            agentController.speed /= 2;
 
             animator.SetTrigger("Triggered");
-
-            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Triggered"))
-            {
-                Destroy(gameObject);
-            }
+            delete = true;
         }
     }
 }

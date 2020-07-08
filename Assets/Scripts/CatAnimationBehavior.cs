@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class CatAnimationBehavior : MonoBehaviour
 {
-    private float currentSpeed;
     private IControlable movemntBehavior;
     private NavMeshAgent agent;
     private Animator animator;
@@ -20,8 +19,7 @@ public class CatAnimationBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpeed = (agent.velocity.magnitude);
-        animator.SetFloat("Speed", (currentSpeed / movemntBehavior.Speed));
+        animator.SetFloat("Speed", (agent.velocity.magnitude / agent.speed));
     }
 
     private void OnTriggerEnter(Collider other)

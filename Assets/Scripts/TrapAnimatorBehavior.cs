@@ -13,6 +13,7 @@ public class TrapAnimatorBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetTrigger("Triggered");
+        if(other.gameObject.name == "Cat")
+            animator.SetTrigger("Triggered");
     }
 }

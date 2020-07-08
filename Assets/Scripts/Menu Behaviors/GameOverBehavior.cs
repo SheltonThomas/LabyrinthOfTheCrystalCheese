@@ -36,7 +36,7 @@ public class GameOverBehavior : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         GameVariables.GameOver = false;
         GameVariables.CatScore = 0;
         GameVariables.MouseScore = 0;

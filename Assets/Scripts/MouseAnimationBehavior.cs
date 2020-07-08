@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class MouseAnimationBehavior : MonoBehaviour
 {
-    private float currentSpeed;
-    private IControlable moevemntBehavior;
+    public float currentSpeed;
+    private IControlable movementBehavior;
     private NavMeshAgent agent;
     private Animator animator;
 
     private void Start()
     {
-        moevemntBehavior = GetComponent<MouseMovementBehavior>();
+        movementBehavior = GetComponent<MouseMovementBehavior>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
@@ -25,6 +25,11 @@ public class MouseAnimationBehavior : MonoBehaviour
             animator.SetTrigger("Place Trap");
         }
         currentSpeed = (agent.velocity.magnitude);
-        animator.SetFloat("Speed", (currentSpeed / moevemntBehavior.Speed));
+        animator.SetFloat("Speed", (currentSpeed / movementBehavior.Speed));
+    }
+
+    private void FixedUpdate()
+    {
+        currentSpeed = agent.velocity.magnitude / Time.fixedDeltaTime;
     }
 }

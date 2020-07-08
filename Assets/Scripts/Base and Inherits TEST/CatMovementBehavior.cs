@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class CatMovementBehavior : MonoBehaviour, IControlable
 {
-    public float speed;
     public float Speed { get; set; }
     public NavMeshAgent Agent { get; set; }
     public float SavedSpeed { get; set; }
@@ -16,22 +15,21 @@ public class CatMovementBehavior : MonoBehaviour, IControlable
     // Start is called before the first frame update
     void Start()
     {
-        Speed = speed;
         Agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        Agent.speed = Speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetButton("Cancel") && !GameVariables.Paused)
+       if(Input.GetButtonDown("Cancel") && !GameVariables.Paused)
        {
             GameVariables.Paused = true;
             SaveCurrentSpeed();
+            return;
        }
 
-       if(Input.GetButton("Cancel") && GameVariables.Paused)
+       else if(Input.GetButtonDown("Cancel") && GameVariables.Paused)
        {
             GameVariables.Paused = false;
             SetCurrentSpeed();
