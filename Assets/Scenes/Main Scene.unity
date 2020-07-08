@@ -304,6 +304,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Over
       objectReference: {fileID: 0}
+    - target: {fileID: 7244667343296717959, guid: e92c5afd76e2fb744a3e43efa1d97563,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8936626965144036494, guid: e92c5afd76e2fb744a3e43efa1d97563,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,6 +377,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781492328273720189, guid: 30f6f22ec71151a44a769daf35b90f46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2781492328273720191, guid: 30f6f22ec71151a44a769daf35b90f46,
         type: 3}
