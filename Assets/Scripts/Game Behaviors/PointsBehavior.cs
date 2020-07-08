@@ -8,11 +8,11 @@ public class PointsBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Mouse")
+        if(other.name == "Mouse")
         {
             GameVariables.MouseScore += 10;
 
-            if(GameVariables.MouseScore % 100 == 0)
+            if(GameVariables.MouseScore % 50 == 0)
             {
                 GameVariables.MouseTraps++;
             }
@@ -24,7 +24,7 @@ public class PointsBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.tag == "Cat")
+        if (other.name == "Cat")
         {
             GameVariables.CatScore += 10;
 

@@ -14,7 +14,7 @@ public class PursueBehavior : MonoBehaviour
     float speedTimer = 5f;
     int rageCounter = 0;
     bool rageActive = false;
-
+    public List<GameObject> spawnLocations;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,18 @@ public class PursueBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         prevSpeed = agent.speed;
         currentSpeed = agent.speed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(transform.position.magnitude - spawnLocations[0].transform.position.magnitude > transform.position.magnitude - spawnLocations[1].transform.position.magnitude)
+        {
+            collision.gameObject.transform.position = spawnLocations[0].transform.position;
+        }
+        else
+        {
+            collision.gameObject.transform.position = spawnLocations[1].transform.position;
+        }
     }
 
     // Update is called once per frame
