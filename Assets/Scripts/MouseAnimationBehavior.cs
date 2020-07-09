@@ -24,12 +24,7 @@ public class MouseAnimationBehavior : MonoBehaviour
         {
             animator.SetTrigger("Place Trap");
         }
-        currentSpeed = (agent.velocity.magnitude);
-        animator.SetFloat("Speed", (currentSpeed / movementBehavior.Speed));
-    }
-
-    private void FixedUpdate()
-    {
-        currentSpeed = agent.velocity.magnitude / Time.fixedDeltaTime;
+        currentSpeed = agent.velocity.magnitude;
+        animator.SetFloat("Speed", (currentSpeed / agent.speed));
     }
 }
