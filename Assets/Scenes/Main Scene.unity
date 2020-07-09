@@ -3865,31 +3865,6 @@ PrefabInstance:
       propertyPath: speed
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8679226087332906373, guid: 0eaac2ddfa97fd044a56be88fac2a467,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679226087332906373, guid: 0eaac2ddfa97fd044a56be88fac2a467,
-        type: 3}
-      propertyPath: m_Height
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679226087332906373, guid: 0eaac2ddfa97fd044a56be88fac2a467,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679226087332906373, guid: 0eaac2ddfa97fd044a56be88fac2a467,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8679226087332906373, guid: 0eaac2ddfa97fd044a56be88fac2a467,
-        type: 3}
-      propertyPath: m_Speed
-      value: 5000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eaac2ddfa97fd044a56be88fac2a467, type: 3}
 --- !u!1 &7292516979478937511 stripped
@@ -3910,7 +3885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a76d8b19991334083f41e1fe800605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 0
 --- !u!4 &7292516979478937513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1553551690777594819, guid: 0eaac2ddfa97fd044a56be88fac2a467,

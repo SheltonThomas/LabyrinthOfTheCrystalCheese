@@ -21,29 +21,29 @@ public class MouseMovementBehavior : MonoBehaviour, IControlable
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetButtonDown("Cancel") && !GameVariables.Paused)
-        //{
-        //    GameVariables.Paused = true;
-        //    SaveCurrentSpeed();
-        //}
+        if (Input.GetButtonDown("Cancel") && !GameVariables.Paused)
+        {
+            GameVariables.Paused = true;
+            SaveCurrentSpeed();
+        }
 
-        //else if (Input.GetButtonDown("Cancel") && GameVariables.Paused)
-        //{
-        //    GameVariables.Paused = false;
-        //    SetCurrentSpeed();
-        //}
+        else if (Input.GetButtonDown("Cancel") && GameVariables.Paused)
+        {
+            GameVariables.Paused = false;
+            SetCurrentSpeed();
+        }
 
-        //if ((Input.GetButtonUp("Vertical") && Input.GetButtonUp("Horizontal")) || GameVariables.Paused)
-        //{
-        //    Agent.SetDestination(transform.position);
-        //    return;
-        //}
+        if ((Input.GetButtonUp("Vertical") && Input.GetButtonUp("Horizontal")) || GameVariables.Paused)
+        {
+            Agent.SetDestination(transform.position);
+            return;
+        }
 
-        //if(GameVariables.GameOver)
-        //{
-        //    Agent.SetDestination(transform.position);
-        //    return;
-        //}
+        if (GameVariables.GameOver)
+        {
+            Agent.SetDestination(transform.position);
+            return;
+        }
 
         float verticalMovement = Input.GetAxis("VerticalTwo");
         float horizontalMovement = Input.GetAxis("HorizontalTwo");

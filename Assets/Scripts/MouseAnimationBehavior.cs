@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MouseAnimationBehavior : MonoBehaviour
 {
-    public float currentSpeed;
+    private float currentSpeed;
     private IControlable movementBehavior;
     private NavMeshAgent agent;
     private Animator animator;
