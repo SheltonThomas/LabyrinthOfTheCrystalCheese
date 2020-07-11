@@ -315,6 +315,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3751088911496637563, guid: 03da9ce76c2e2b2428e54d4189dd3088,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4479268509785284068, guid: 03da9ce76c2e2b2428e54d4189dd3088,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -384,6 +389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315332599518996331, guid: 03da9ce76c2e2b2428e54d4189dd3088,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03da9ce76c2e2b2428e54d4189dd3088, type: 3}
