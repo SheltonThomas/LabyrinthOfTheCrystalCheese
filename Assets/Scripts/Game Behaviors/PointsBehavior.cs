@@ -8,15 +8,35 @@ public class PointsBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Mouse")
+        if(other.name == "Mouse")
         {
             GameVariables.MouseScore += 10;
+
+            if(GameVariables.MouseScore % 50 == 0)
+            {
+                GameVariables.MouseTraps++;
+            }
+
+            if(GameVariables.MouseScore == GameVariables.GameLimit && GameVariables.GameMode == GameMode.Score)
+            {
+                GameVariables.GameOver = true;
+            }
             Destroy(gameObject);
         }
 
-        if (other.tag == "Cat")
+        if (other.name == "Cat")
         {
             GameVariables.CatScore += 10;
+
+            if (GameVariables.CatScore % 100 == 0)
+            {
+                GameVariables.CatTraps++;
+            }
+
+            if (GameVariables.CatScore == GameVariables.GameLimit && GameVariables.GameMode == GameMode.Score)
+            {
+                GameVariables.GameOver = true;
+            }
             Destroy(gameObject);
         }
     }

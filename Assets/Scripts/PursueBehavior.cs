@@ -12,6 +12,9 @@ public class PursueBehavior : MonoBehaviour
     float prevSpeed;
     float currentSpeed;
     float speedTimer = 5f;
+    int rageCounter = 0;
+    bool rageActive = false;
+    public List<GameObject> spawnLocations;
 
     // Start is called before the first frame update
     void Start()
@@ -21,39 +24,95 @@ public class PursueBehavior : MonoBehaviour
         currentSpeed = agent.speed;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(transform.position.magnitude - spawnLocations[0].transform.position.magnitude > transform.position.magnitude - spawnLocations[1].transform.position.magnitude)
+        {
+            collision.gameObject.transform.position = spawnLocations[0].transform.position;
+        }
+        else
+        {
+            collision.gameObject.transform.position = spawnLocations[1].transform.position;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (GameVariables.Paused)
+        if (GameVariables.Paused || GameVariables.GameOver)
         {
             agent.SetDestination(gameObject.transform.position);
             return;
         }
 
-        currentSpeed = agent.speed;
+        currentSpeed = agent.velocity.magnitude;
         agent.SetDestination(target.position);
 
-        if (prevSpeed != currentSpeed)
+        if(GameVariables.CatScore < GameVariables.MouseScore)
+        {
+            currentSpeed += 0.02f;
+        }
+        else if (GameVariables.CatScore > GameVariables.MouseScore)
+        {
+            ResetSpeed();
+        }
+
+        if (currentSpeed < prevSpeed && speedCheck == false)
         {
             speedCheck = true;
             speedTimer -= Time.deltaTime;
+        }
+        else if (rageCounter >= 10 && rageActive == false)
+        {
+            // If cat hits a certain amount of traps, Gain a temporary burst of speed
+            SetSpeed(75f);
+            rageActive = true;
         }
         else
         {
             // Acts like Diminishing Returns 
             speedTimer += Time.deltaTime;
-            if (speedTimer > 3f)
+            if (speedTimer > 3f && rageCounter < 10)
             {
                 speedTimer = 3f;
+            }
+            else if(rageCounter >= 10)
+            {
+                if (speedTimer > 5f)
+                {
+                    speedTimer = 5f;
+                }
             }
         }
 
         if (currentSpeed < prevSpeed && speedCheck == true)
         {
-            if(speedTimer < 0f)
+            if (rageActive != true)
             {
-                ResetSpeed();  
+                if (speedTimer < 0f)
+                {
+                    ResetSpeed();
+                    rageCounter++;
+                }
             }
+            speedCheck = false;
+        }
+        else if(rageCounter >= 10)
+        {
+            if(speedTimer >= 5f)
+            {
+                ResetSpeed();
+                rageCounter = 0;
+                rageActive = false;
+            }
+            speedCheck = false;
+        }
+
+        // If for some reason ResetSpeed gets stuck
+        if(speedTimer < -1f && currentSpeed < prevSpeed)
+        {
+            ResetSpeed();
+            speedTimer = 3;
             speedCheck = false;
         }
     }
